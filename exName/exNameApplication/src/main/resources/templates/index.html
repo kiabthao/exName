@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"  href="/resources/style/style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Items</title>
+<style>
+body  {
+    
+ background-image: url('/resources/img/tommy2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+ 
+}
+</style>
+</head>
+<body>
+
+	<h1 align="center">Available items</h1>
+	<a th:href="@{/shoppingcart}" style="text-decoration: none; float: right"> 
+		<input type="submit" value="Check cart"></a>
+	<br />
+	<br />
+	<table id="table">
+		<tr>
+			<th>id</th>
+			<th>code</th>
+			<th>label</th>
+			<th>unit price</th>
+		</tr>
+
+		<tr>
+		<tr th:each="nom : ${listNom}">
+			<td th:text="${nom.id}" />
+			<td th:text="${item.code}" />
+			<td th:text="${item.label}" />
+			<td th:text="${item.price}" />
+			<td width="60"><a th:href="@{'/item/add/' + ${item.id}}"><img
+					style="width: 97px; height: 40px;"
+					th:src="@{/resources/img/addToCart.png}" /></a></td>
+
+		</tr>
+	</table>
+
+</body>
+</html>
